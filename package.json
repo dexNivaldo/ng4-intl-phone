@@ -1,11 +1,11 @@
 {
-    "name": "ng4-intl-phone",
-    "version": "1.2.1",
-    "description": "International phone prefix library for Angular 2 & 4",
-    "main": "./ng4-intl-phone.umd.js",
-    "module": "./ng4-intl-phone.es5.js",
-    "es2015": "./ng4-intl-phone.js",
-    "typings": "./ng4-intl-phone.d.ts",
+    "name": "dex-intl-phone",
+    "version": "1.0.0",
+    "description": "fork for dexFreight of ng4-intl-phone (International phone prefix library for Angular 2 & 4)",
+    "main": "./dex-intl-phone.umd.js",
+    "module": "./dex-intl-phone.es5.js",
+    "es2015": "./dex-intl-phone.js",
+    "typings": "./dex-intl-phone.d.ts",
     "author": "kondi0",
     "license": "MIT",
     "repository": {
