@@ -1,10 +1,10 @@
-import {Component, ElementRef, forwardRef, HostListener, Input, OnInit, Renderer2} from '@angular/core';
-import {Country} from '../../interface/country.interface';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {CountryCode} from '../../interface/country-code.interface';
-import {CountryService} from '../../service/country.service';
-import {LocaleService} from '../../service/locale.service';
+import { Component, ElementRef, forwardRef, HostListener, Input, OnInit } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as _ from 'lodash';
+import { CountryCode } from '../../interface/country-code.interface';
+import { Country } from '../../interface/country.interface';
+import { CountryService } from '../../service/country.service';
+import { LocaleService } from '../../service/locale.service';
 
 const COUNTER_CONTROL_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
@@ -39,7 +39,7 @@ export class IntPhonePrefixComponent implements OnInit, ControlValueAccessor {
     maxLength = 15;
 
     @Input()
-    onlyNumbers = true;
+    onlyNumbers = false;
 
     // ELEMENT REF
     phoneComponent: ElementRef;
@@ -152,7 +152,7 @@ export class IntPhonePrefixComponent implements OnInit, ControlValueAccessor {
             : this.phoneInput;
 
         this.selectedCountry = this.countries.find((country: Country) => country.countryCode === countryCode);
-        this.phoneInput = `${PLUS}${this.selectedCountry.dialCode} ${newInputValue.replace(/ /g, '')}`;
+        this.phoneInput = `${PLUS}${this.selectedCountry.dialCode} ${newInputValue}`;
     }
 
     private findPrefix(prefix: string) {
