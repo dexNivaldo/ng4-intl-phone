@@ -1,10 +1,10 @@
-import { Component, ElementRef, forwardRef, HostListener, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {Component, ElementRef, forwardRef, HostListener, Input, OnInit} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import * as _ from 'lodash';
-import { CountryCode } from '../../interface/country-code.interface';
-import { Country } from '../../interface/country.interface';
-import { CountryService } from '../../service/country.service';
-import { LocaleService } from '../../service/locale.service';
+import {CountryCode} from '../../interface/country-code.interface';
+import {Country} from '../../interface/country.interface';
+import {CountryService} from '../../service/country.service';
+import {LocaleService} from '../../service/locale.service';
 
 const COUNTER_CONTROL_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
@@ -152,7 +152,7 @@ export class IntPhonePrefixComponent implements OnInit, ControlValueAccessor {
             : this.phoneInput;
 
         this.selectedCountry = this.countries.find((country: Country) => country.countryCode === countryCode);
-        this.phoneInput = `${PLUS}${this.selectedCountry.dialCode} ${newInputValue}`;
+        this.phoneInput = `${PLUS}${this.selectedCountry.dialCode} ${this.format(newInputValue)}`;
     }
 
     private findPrefix(prefix: string) {
@@ -163,9 +163,45 @@ export class IntPhonePrefixComponent implements OnInit, ControlValueAccessor {
     }
 
     private updateValue() {
-        this.value = this.phoneInput.replace(/ /g, '');
-        this.onModelChange(this.value);
+        this.onModelChange(this.phoneInput);
         this.onTouch();
+        if (this.selectedCountry) {
+            this.updatePhoneInput(this.selectedCountry.countryCode);
+        }
+
+    }
+
+    private format(v: string): string {
+        let s: string = '';
+        const mask = '(999) 999 9999'
+        const matches = v.match(/[a-zA-Z0-9]+/g);
+        if (matches !== null) {
+            let value = matches.join('').split('');
+
+            const chars = mask.split('');
+            for (let c of chars) {
+                // if (value.length === 0) {
+                //   break;
+                // }
+
+                switch (c) {
+
+                    case '9':
+                        if (value.length > 0) {
+                            if (value[0].match(/\d/) !== null) {
+                                s += value[0];
+                                value = value.slice(1);
+                            }
+                        }
+                        break;
+
+                    default:
+                        s += c;
+                }
+            }
+        }
+
+        return s;
     }
 
     private static startsWithPlus(text: string): boolean {
