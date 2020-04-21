@@ -2,19 +2,20 @@
 
 ## Description
 This is a simple library with international phone prefix with flags images.
+Modified for dexFreight
 
 ## Installation
 
 To install this component to an external project, follow the procedure:
 
-1. __npm install ng4-intl-phone --save__
+1. __npm install dex-intl-phone --save__
 
 2. Add __InternationalPhoneModule__ import to your __@NgModule__ like example below
     ```ts
     import { NgModule } from '@angular/core';
     import { BrowserModule } from '@angular/platform-browser';
     import { MyTestApp } from './my-test-app';
-    import { InternationalPhoneModule } from 'ng4-intl-phone';
+    import { InternationalPhoneModule } from 'dex-intl-phone';
 
     @NgModule({
         imports:      [ BrowserModule, InternationalPhoneModule ],
@@ -108,3 +109,4 @@ To install this component to an external project, follow the procedure:
     * International
     * Angular2
     * Angular4
+    * dexFreight

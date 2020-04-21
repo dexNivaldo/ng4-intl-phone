@@ -1,6 +1,6 @@
 {
     "name": "dex-intl-phone",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "fork for dexFreight of ng4-intl-phone (International phone prefix library for Angular 2 & 4)",
     "main": "./dex-intl-phone.umd.js",
     "module": "./dex-intl-phone.es5.js",
