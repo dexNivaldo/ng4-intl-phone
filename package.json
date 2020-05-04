@@ -72,9 +72,5 @@
         "tslint": "^4.4.2",
         "typescript": "^2.2.1",
         "zone.js": "^0.8.4"
-    },
-    "dependencies": {
-        "@angular/forms": "^9.1.4",
-        "@types/lodash": "^4.14.150"
     }
 }
