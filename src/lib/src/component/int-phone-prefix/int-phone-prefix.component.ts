@@ -1,10 +1,10 @@
-import {Component, ElementRef, forwardRef, HostListener, Input, OnInit} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { Component, ElementRef, forwardRef, HostListener, Input, OnInit } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as _ from 'lodash';
-import {CountryCode} from '../../interface/country-code.interface';
-import {Country} from '../../interface/country.interface';
-import {CountryService} from '../../service/country.service';
-import {LocaleService} from '../../service/locale.service';
+import { CountryCode } from '../../interface/country-code.interface';
+import { Country } from '../../interface/country.interface';
+import { CountryService } from '../../service/country.service';
+import { LocaleService } from '../../service/locale.service';
 
 const COUNTER_CONTROL_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
@@ -40,6 +40,9 @@ export class IntPhonePrefixComponent implements OnInit, ControlValueAccessor {
 
     @Input()
     onlyNumbers = false;
+
+    @Input()
+    disableInput = false;
 
     // ELEMENT REF
     phoneComponent: ElementRef;

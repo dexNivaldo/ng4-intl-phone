@@ -1,27 +1,21 @@
 <div class="input-group">
-      <span class="input-group-addon flagInput">
-         <div class="dropdown">
-            <button type="button" class="dropbtn btn" (click)="showDropDown()" [disabled]="disabled">
-              <span [class]="'flag flag-' + selectedCountry.countryCode" *ngIf="selectedCountry"></span>
-              <span class="defaultCountry" *ngIf="!selectedCountry"></span>
-            </button>
-            <div class="dropdown-content" *ngIf="showDropdown" clickOutside>
-              <div class="list-group scrollable-menu">
-                <a href="#" class="list-group-item" *ngFor="let country of countries | country: countryFilter"
-                   (click)="updateSelectedCountry($event, country.countryCode)">
-                  <span [class]="'flag flag-' + country.countryCode"></span>
-                  <span class="country-name">{{ country.name }}  <span
-                      class="dial-code">+ {{ country.dialCode}}</span></span>
-                </a>
-              </div>
-            </div>
+  <span class="input-group-addon flagInput">
+    <div class="dropdown">
+      <button type="button" class="dropbtn btn" (click)="showDropDown()" [disabled]="disabled">
+        <span [class]="'flag flag-' + selectedCountry.countryCode" *ngIf="selectedCountry"></span>
+        <span class="defaultCountry" *ngIf="!selectedCountry"></span>
+      </button>
+      <div class="dropdown-content" *ngIf="showDropdown" clickOutside>
+        <div class="list-group scrollable-menu">
+          <a href="#" class="list-group-item" *ngFor="let country of countries | country: countryFilter"
+            (click)="updateSelectedCountry($event, country.countryCode)">
+            <span [class]="'flag flag-' + country.countryCode"></span>
+            <span class="country-name">{{ country.name }} <span class="dial-code">+ {{ country.dialCode}}</span></span>
+          </a>
         </div>
-      </span>
-    <input [onlyNumber]="onlyNumbers"
-           class="form-control"
-           [maxlength]="maxLength"
-           [disabled]="disabled"
-           [ngModel]="phoneInput | mask:selectedCountry"
-           (ngModelChange)="phoneInput = $event; updatePhone()">
+      </div>
+    </div>
+  </span>
+  <input [onlyNumber]="onlyNumbers" class="form-control" [maxlength]="maxLength" [disabled]="disabled || disableInput"
+    [ngModel]="phoneInput | mask:selectedCountry" (ngModelChange)="phoneInput = $event; updatePhone()">
 </div>
-
